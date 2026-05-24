@@ -1,0 +1,205 @@
+info:
+  name: 4. Actualizar Usuario
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: http://localhost:3000/users/428331bb-b892-4bff-b9dc-26260c68e7f4
+  body:
+    type: multipart-form
+    data:
+      - name: usnombre
+        type: text
+        value: Erick Nuñez
+        disabled: true
+      - name: uscorreo
+        type: text
+        value: ""
+        disabled: true
+      - name: usrol
+        type: text
+        value: empleado
+        disabled: true
+      - name: usestado
+        type: text
+        value: inactivo
+        disabled: true
+      - name: imagen
+        type: text
+        value: ""
+        disabled: true
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5MzI5NDA5LCJleHAiOjE3NzkzNDc0MDl9.AYUpkxg-YomggHIx8CIwxuXp8K6yPcxdO-8TzfGQ1GI
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: "[ 200 ] Response"
+    description: Respuesta 200 del servidor cuando enviamos un parametro correcto
+    request:
+      url: http://localhost:3000/users/428331bb-b892-4bff-b9dc-26260c68e7f4
+      method: PATCH
+      body:
+        type: multipart-form
+        data:
+          - name: usnombre
+            type: text
+            value: Erick Nuñez
+          - name: uscorreo
+            type: text
+            value: ""
+            disabled: true
+          - name: usrol
+            type: text
+            value: ""
+            disabled: true
+          - name: usestado
+            type: text
+            value: ""
+            disabled: true
+          - name: imagen
+            type: text
+            value: ""
+            disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-security-policy
+          value: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: cross-origin-resource-policy
+          value: same-origin
+        - name: origin-agent-cluster
+          value: ?1
+        - name: referrer-policy
+          value: no-referrer
+        - name: strict-transport-security
+          value: max-age=31536000; includeSubDomains
+        - name: x-content-type-options
+          value: nosniff
+        - name: x-dns-prefetch-control
+          value: off
+        - name: x-download-options
+          value: noopen
+        - name: x-frame-options
+          value: SAMEORIGIN
+        - name: x-permitted-cross-domain-policies
+          value: none
+        - name: x-xss-protection
+          value: "0"
+        - name: access-control-allow-origin
+          value: "*"
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "316"
+        - name: etag
+          value: W/"13c-3z1bWNriN8DzuO/OERlf4PjlRZk"
+        - name: date
+          value: Thu, 21 May 2026 03:31:56 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+            "usid": "428331bb-b892-4bff-b9dc-26260c68e7f4",
+            "usemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+            "usnombre": "Erick Nuñez",
+            "usapodo": "cmep2004",
+            "uscorreo": "chinchay2004@gmail.com",
+            "usimagen": "http://localhost:3000/uploads/usuarios/Bun.png",
+            "usrol": "jefe",
+            "usfchregistro": "2026-05-17T05:29:24.959Z",
+            "usestado": "activo"
+          }
+
+docs: |
+  # PATCH /users/:id
+
+  ## Descripción
+  Actualiza los datos de un usuario y retorna el usuario con los valores actualizados.
+
+  ## Autenticación
+  Requiere token JWT en el header:
+
+  `Authorization: Bearer <token>`
+
+  ## Content-Type
+  - `application/json` (sin imagen)
+  - `multipart/form-data` (con imagen)
+
+  ## Path Param
+  - `id`: identificador del usuario.
+
+  Ejemplo:
+
+  `PATCH /users/2a6eb0a9-10e1-49fb-a2f3-1e5c580f5a07`
+
+  ## Body
+  - `usnombre` (opcional): nombre del usuario.
+  - `uscorreo` (opcional): correo del usuario.
+  - `usestado` (opcional): estado del usuario (`activo`, `inactivo`, `eliminado`).
+  - `usrol` (opcional): rol del usuario (`jefe`, `empleado`).
+  - `imagen` (opcional, archivo): imagen de perfil.
+
+  ## Reglas de imagen (si se envía)
+  - Campo: `imagen`
+  - Formatos permitidos: `.png`, `.jpg`
+  - Tamaño máximo: `5MB`
+
+  ## Ejemplo (JSON)
+
+  ```json
+  {
+    "usnombre": "Juan Perez",
+    "uscorreo": "juan.perez@empresa.com",
+    "usrol": "empleado"
+  }
+  ```
+
+  ## Respuesta Exitosa
+  `200 OK`
+
+  ```json
+  {
+    "usid": "2a6eb0a9-10e1-49fb-a2f3-1e5c580f5a07",
+    "usemid": "0f4c5bde-9a11-4c76-9b6a-2e0b58e9bc2a",
+    "usnombre": "Juan Perez",
+    "usapodo": "jperez",
+    "uscorreo": "juan.perez@empresa.com",
+    "usimagen": "https://api.tudominio.com/uploads/usuarios/user.png",
+    "usrol": "empleado",
+    "usfchregistro": "2026-05-18T18:20:10.000Z",
+    "usestado": "activo"
+  }
+  ```
+
+  ## Comportamiento relevante
+  - Solo permite actualizar usuarios de la misma empresa del usuario autenticado.
+  - El usuario autenticado debe estar activo.
+  - La empresa del usuario autenticado debe estar activa.
+  - Los roles permitidos para este endpoint son `jefe`, `empleado` o `administrador`.
+  - Si se envía `usrol`, solo un usuario con rol `jefe` puede cambiarlo.
+  - Si se envía `usrol`, el rol permitido para actualizar es `jefe` o `empleado` (no `administrador`).
+  - Si el usuario objetivo está en estado `eliminado`, no se permite actualizar.
+  - Debe enviarse al menos un campo para actualizar.
+  - Si se envía `uscorreo` y ya existe, se retorna error de negocio.
+  - El backend transforma `usimagen` a URL pública completa.
+
+  ## Errores comunes
+  - Token inválido o ausente: `401 Unauthorized`.
+  - `id` inválido o ausente: `400 Bad Request`.
+  - Body sin campos para actualizar: error de validación.
+  - Correo duplicado: `User already exists with that email`.
+  - Usuario no encontrado: `404 Not Found`.

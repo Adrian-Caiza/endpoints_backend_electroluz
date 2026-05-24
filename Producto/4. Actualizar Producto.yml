@@ -1,0 +1,315 @@
+info:
+  name: 4. Actualizar Producto
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: http://localhost:3000/products/46ab42f3-60fc-42af-8d52-ff769ea40c78
+  body:
+    type: multipart-form
+    data:
+      - name: prdtoctgriaid
+        type: text
+        value: d9475c59-4fcc-469a-ad8f-3f9f28190058
+        disabled: true
+      - name: prdtomrcid
+        type: text
+        value: ""
+        disabled: true
+      - name: prdtoprovid
+        type: text
+        value: ""
+        disabled: true
+      - name: prdtomdiaid
+        type: text
+        value: ""
+        disabled: true
+      - name: prdtocodigo
+        type: text
+        value: ""
+        disabled: true
+      - name: prdtonombre
+        type: text
+        value: Brocha 1"
+        disabled: true
+      - name: prdtopreciocompra
+        type: text
+        value: "1.25"
+        disabled: true
+      - name: prdtoprecioventa
+        type: text
+        value: "1.80"
+        disabled: true
+      - name: prdtostockminimo
+        type: text
+        value: ""
+        disabled: true
+      - name: prdtostockmaximo
+        type: text
+        value: ""
+        disabled: true
+      - name: prdtoestado
+        type: text
+        value: inactivo
+      - name: imagen
+        type: text
+        value: ""
+        disabled: true
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5NTc3NTA3LCJleHAiOjE3Nzk1OTU1MDd9.GZnVFwPo-hSeRg8zV_e2_jU6lSy2cBOBy0-JbVf2ET0
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: "[ 200 ] Response"
+    description: Respuesta 200 del servidor cuando enviamos los parametros correctos.
+    request:
+      url: http://localhost:3000/products/46ab42f3-60fc-42af-8d52-ff769ea40c78
+      method: PATCH
+      body:
+        type: multipart-form
+        data:
+          - name: prdtoctgriaid
+            type: text
+            value: d9475c59-4fcc-469a-ad8f-3f9f28190058
+          - name: prdtomrcid
+            type: text
+            value: ""
+            disabled: true
+          - name: prdtoprovid
+            type: text
+            value: ""
+            disabled: true
+          - name: prdtomdiaid
+            type: text
+            value: ""
+            disabled: true
+          - name: prdtocodigo
+            type: text
+            value: ""
+            disabled: true
+          - name: prdtonombre
+            type: text
+            value: Brocha 1"
+          - name: prdtopreciocompra
+            type: text
+            value: "1.25"
+          - name: prdtoprecioventa
+            type: text
+            value: "1.80"
+          - name: prdtostockminimo
+            type: text
+            value: ""
+            disabled: true
+          - name: prdtostockmaximo
+            type: text
+            value: ""
+            disabled: true
+          - name: prdtoestado
+            type: text
+            value: ""
+            disabled: true
+          - name: imagen
+            type: text
+            value: ""
+            disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-security-policy
+          value: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: cross-origin-resource-policy
+          value: same-origin
+        - name: origin-agent-cluster
+          value: ?1
+        - name: referrer-policy
+          value: no-referrer
+        - name: strict-transport-security
+          value: max-age=31536000; includeSubDomains
+        - name: x-content-type-options
+          value: nosniff
+        - name: x-dns-prefetch-control
+          value: off
+        - name: x-download-options
+          value: noopen
+        - name: x-frame-options
+          value: SAMEORIGIN
+        - name: x-permitted-cross-domain-policies
+          value: none
+        - name: x-xss-protection
+          value: "0"
+        - name: access-control-allow-origin
+          value: "*"
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "843"
+        - name: etag
+          value: W/"34b-Lb/tTU9AIW+MVuK51I7A6gSJkeY"
+        - name: date
+          value: Sat, 23 May 2026 23:49:35 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+            "prdtoid": "46ab42f3-60fc-42af-8d52-ff769ea40c78",
+            "prdtoemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+            "categoria": {
+              "ctgriaid": "d9475c59-4fcc-469a-ad8f-3f9f28190058",
+              "ctgnombre": "Herramientas Pequeñas",
+              "ctgriadescripcion": "Descripción actualizada"
+            },
+            "marca": {
+              "mrcid": "4ba16156-e626-4fe3-8b5c-0d8ab3f19674",
+              "mrcnombre": "Trupper"
+            },
+            "proveedor": {
+              "provid": "6d50fa31-54c0-4ea3-a798-19f4801b70de",
+              "provnombre": "Cemento Polar"
+            },
+            "medida": {
+              "mdiaid": "51ed3597-837e-42d1-9bf7-79a30e00f51d",
+              "mdianombre": "Unidad Comercial",
+              "mdiaabreviatura": "UND"
+            },
+            "prdtocodigo": "012345678901",
+            "prdtonombre": "Brocha 1\"",
+            "prdtopreciocompra": "1.2500",
+            "prdtoprecioventa": "1.8000",
+            "prdtostockminimo": "10.00",
+            "prdtostockmaximo": "50.00",
+            "prdtoimagen": "http://localhost:3000/uploads/productos/cemento_test.png",
+            "prdtofchregistro": "2026-05-23T23:21:23.477Z",
+            "prdtoestado": "activo"
+          }
+
+docs: |
+  # PATCH /products/:id
+
+  ## Descripción
+  Actualiza un producto por su identificador, limitado a la empresa del usuario autenticado.
+
+  ## Autenticación
+  Requiere token JWT en el header:
+
+  `Authorization: Bearer <token>`
+
+  ## Content-Type
+  - `application/json` (sin imagen)
+  - `multipart/form-data` (con imagen)
+
+  ## Path Param
+  - `id`: identificador del producto.
+
+  Ejemplo:
+
+  `PATCH /products/f8a0a2ab-9fbe-4fcf-b4d4-6888e0c4f410`
+
+  ## Body (todos opcionales)
+  - `prdtoctgriaid`: id de la categoría.
+  - `prdtomrcid`: id de la marca.
+  - `prdtoprovid`: id del proveedor.
+  - `prdtomdiaid`: id de la medida.
+  - `prdtocodigo`: código del producto.
+  - `prdtonombre`: nombre del producto.
+  - `prdtopreciocompra`: precio de compra.
+  - `prdtoprecioventa`: precio de venta.
+  - `prdtostockminimo`: stock mínimo.
+  - `prdtostockmaximo`: stock máximo.
+  - `prdtoestado`: estado del producto (`activo`, `inactivo`, `eliminado`).
+  - `imagen` (opcional, archivo): imagen del producto.
+
+  ## Reglas de imagen (si se envía)
+  - Campo: `imagen`
+  - Formatos permitidos: `.png`, `.jpg`
+  - Tamaño máximo: `5MB`
+
+  ## Ejemplo (JSON)
+
+  ```json
+  {
+    "prdtoctgriaid": "d9475c59-4fcc-469a-ad8f-3f9f28190058",
+    "prdtomrcid": "4ba16156-e626-4fe3-8b5c-0d8ab3f19674",
+    "prdtoprovid": "6d50fa31-54c0-4ea3-a798-19f4801b70de",
+    "prdtomdiaid": "51ed3597-837e-42d1-9bf7-79a30e00f51d",
+    "prdtocodigo": "012345678901",
+    "prdtonombre": "Brocha 1\"",
+    "prdtopreciocompra": 1.25,
+    "prdtoprecioventa": 1.8,
+    "prdtostockminimo": 10,
+    "prdtostockmaximo": 50,
+    "prdtoestado": "activo"
+  }
+  ```
+
+  ## Respuesta Exitosa
+  `200 OK`
+
+  ```json
+  {
+    "prdtoid": "46ab42f3-60fc-42af-8d52-ff769ea40c78",
+    "prdtoemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+    "categoria": {
+      "ctgriaid": "d9475c59-4fcc-469a-ad8f-3f9f28190058",
+      "ctgnombre": "Herramientas Pequeñas",
+      "ctgriadescripcion": "Descripción actualizada"
+    },
+    "marca": {
+      "mrcid": "4ba16156-e626-4fe3-8b5c-0d8ab3f19674",
+      "mrcnombre": "Acme Tools"
+    },
+    "proveedor": {
+      "provid": "6d50fa31-54c0-4ea3-a798-19f4801b70de",
+      "provnombre": "Proveedor Centro"
+    },
+    "medida": {
+      "mdiaid": "51ed3597-837e-42d1-9bf7-79a30e00f51d",
+      "mdianombre": "Unidad",
+      "mdiaabreviatura": "UND"
+    },
+    "prdtocodigo": "012345678901",
+    "prdtonombre": "Brocha 1\"",
+    "prdtopreciocompra": 1.25,
+    "prdtoprecioventa": 1.8,
+    "prdtostockminimo": 10,
+    "prdtostockmaximo": 50,
+    "prdtoimagen": "http://localhost:3000/uploads/productos/cemento_test.png",
+    "prdtofchregistro": "2026-05-23T23:21:23.477Z",
+    "prdtoestado": "activo"
+  }
+  ```
+
+  ## Comportamiento relevante
+  - Solo permite actualizar productos de la misma empresa del usuario autenticado.
+  - La empresa del usuario autenticado debe estar activa.
+  - El usuario autenticado debe estar activo.
+  - Roles permitidos para este endpoint: `jefe` o `empleado`.
+  - Si el producto está en estado `eliminado`, no se permite actualizar.
+  - Si se envía `prdtoctgriaid`, `prdtomrcid`, `prdtoprovid` o `prdtomdiaid`, se valida que existan en la misma empresa.
+  - Si se envía `prdtocodigo`, se valida que no exista duplicado dentro de la misma empresa.
+  - Si se envía `prdtonombre`, se valida que no exista duplicado dentro de la misma empresa.
+  - Debe enviarse al menos un campo para actualizar.
+  - `prdtoimagen` en la respuesta se entrega como URL pública del backend.
+
+  ## Errores comunes
+  - Token inválido o ausente: `401 Unauthorized`.
+  - `id` inválido o ausente: `400 Bad Request`.
+  - Datos inválidos en body (estado, números, etc.): error de validación.
+  - Categoría/marca/proveedor/medida inexistentes: error de validación de negocio.
+  - Producto duplicado por código: `Product already exists with that code`.
+  - Producto duplicado por nombre: `Product already exists with that name`.
+  - Producto no encontrado: `404 Not Found`.
+  - Intento de actualización sin rol `jefe` o `empleado`: error de autorización.

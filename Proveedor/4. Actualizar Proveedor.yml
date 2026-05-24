@@ -1,0 +1,186 @@
+info:
+  name: 4. Actualizar Proveedor
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: http://localhost:3000/proveedores/2be2b42d-ce3b-4665-b8bd-91df604eb924
+  body:
+    type: json
+    data: |-
+      {
+        "provctgriaid": null,
+        "provmrcid": null,
+        "provnombre": "Polvo Prueba",
+        "provtelefono": "0984653464",
+        "provestado" : "inactivo"
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5NTU3MDQwLCJleHAiOjE3Nzk1NzUwNDB9.WBGkGy8syiHWEib37kxklYmOn_757FfuErO6xVMfRAY
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: "[ 200 ] Response"
+    description: Respuesta 200 del servidor cuando enviamos los parametros correctos.
+    request:
+      url: http://localhost:3000/proveedores/2be2b42d-ce3b-4665-b8bd-91df604eb924
+      method: PATCH
+      body:
+        type: json
+        data: |-
+          {
+            "provctgriaid": null,
+            "provmrcid": null,
+            "provnombre": "Polvo Prueba",
+            "provtelefono": "0984653464",
+            "provestado" : "inactivo"
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-security-policy
+          value: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: cross-origin-resource-policy
+          value: same-origin
+        - name: origin-agent-cluster
+          value: ?1
+        - name: referrer-policy
+          value: no-referrer
+        - name: strict-transport-security
+          value: max-age=31536000; includeSubDomains
+        - name: x-content-type-options
+          value: nosniff
+        - name: x-dns-prefetch-control
+          value: off
+        - name: x-download-options
+          value: noopen
+        - name: x-frame-options
+          value: SAMEORIGIN
+        - name: x-permitted-cross-domain-policies
+          value: none
+        - name: x-xss-protection
+          value: "0"
+        - name: access-control-allow-origin
+          value: "*"
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "272"
+        - name: etag
+          value: W/"110-25mEIzaR7yYxKLkCadBmMnfdvO8"
+        - name: date
+          value: Sat, 23 May 2026 18:25:16 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+            "provid": "2be2b42d-ce3b-4665-b8bd-91df604eb924",
+            "provemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+            "categoria": null,
+            "marca": null,
+            "provnombre": "Polvo Prueba",
+            "provtelefono": "0984653464",
+            "provcorreo": null,
+            "provfchregistro": "2026-05-23T02:05:47.211Z",
+            "provestado": "inactivo"
+          }
+
+docs: |
+  # PATCH /proveedores/:id
+
+  ## Descripción
+  Actualiza un proveedor por su identificador, limitado a la empresa del usuario autenticado.
+
+  ## Autenticación
+  Requiere token JWT en el header:
+
+  `Authorization: Bearer <token>`
+
+  ## Path Param
+  - `id`: identificador del proveedor.
+
+  Ejemplo:
+
+  `PATCH /proveedores/a052ef32-3c4b-41da-871a-dfec99d8afa3`
+
+  ## Body
+  - `provctgriaid` (opcional): id de la categoría. También puede enviarse `null`.
+  - `provmrcid` (opcional): id de la marca. También puede enviarse `null`.
+  - `provnombre` (opcional): nombre del proveedor.
+  - `provtelefono` (opcional): teléfono del proveedor (formato móvil de 10 dígitos, por ejemplo `0984653471`). También puede enviarse `null`.
+  - `provcorreo` (opcional): correo del proveedor. También puede enviarse `null`.
+  - `provestado` (opcional): estado del proveedor (`activo`, `inactivo`, `eliminado`).
+
+  ## Ejemplo (JSON)
+
+  ```json
+  {
+    "provctgriaid": "85cdca30-3008-466b-b896-52d588cdda10",
+    "provmrcid": "5d2f2f91-e1d9-4f3f-b2ad-35f54f9500b9",
+    "provnombre": "DeWalt Centro Norte",
+    "provtelefono": "0984653471",
+    "provcorreo": "contacto@dewalt-centro.com",
+    "provestado": "activo"
+  }
+  ```
+
+  ## Respuesta Exitosa
+  `200 OK`
+
+  ```json
+  {
+    "provid": "a052ef32-3c4b-41da-871a-dfec99d8afa3",
+    "provemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+    "categoria": {
+      "ctgriaid": "85cdca30-3008-466b-b896-52d588cdda10",
+      "ctgnombre": "Pintura",
+      "ctgriadescripcion": null
+    },
+    "marca": {
+      "mrcid": "5d2f2f91-e1d9-4f3f-b2ad-35f54f9500b9",
+      "mrcnombre": "Truper"
+    },
+    "provnombre": "DeWalt Centro Norte",
+    "provtelefono": "0984653471",
+    "provcorreo": "contacto@dewalt-centro.com",
+    "provfchregistro": "2026-05-23T17:29:01.621Z",
+    "provestado": "activo"
+  }
+  ```
+
+  ## Comportamiento relevante
+  - Solo permite actualizar proveedores de la misma empresa del usuario autenticado.
+  - La empresa del usuario autenticado debe estar activa.
+  - El usuario autenticado debe estar activo.
+  - Solo un usuario con rol `jefe` o `empleado` puede actualizar un proveedor.
+  - Si el proveedor está en estado `eliminado`, no se permite actualizar.
+  - Si se envía `provnombre`, se valida que no exista duplicado dentro de la misma empresa.
+  - Si se envía `provctgriaid` (no `null`), se valida que la categoría exista en la misma empresa y esté activa.
+  - Si se envía `provmrcid` (no `null`), se valida que la marca exista en la misma empresa y esté activa.
+  - Debe enviarse al menos un campo para actualizar.
+
+  ## Errores comunes
+  - Token inválido o ausente: `401 Unauthorized`.
+  - `id` inválido o ausente: `400 Bad Request`.
+  - `provestado` inválido: error de validación.
+  - `provtelefono` inválido: `Proveedor phone must be valid`.
+  - `provcorreo` inválido: `Proveedor email must be valid`.
+  - Proveedor duplicado por nombre en la misma empresa: `Proveedor already exists with that name`.
+  - Categoría inexistente o inactiva: `Proveedor category does not exist` / `Proveedor category is not active`.
+  - Marca inexistente o inactiva: `Proveedor brand does not exist` / `Proveedor brand is not active`.
+  - Proveedor no encontrado: `404 Not Found`.
+  - Intento de actualización sin rol `jefe` o `empleado`: error de autorización.

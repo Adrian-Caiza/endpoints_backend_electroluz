@@ -1,0 +1,199 @@
+info:
+  name: 1. Registrar Usuario
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/users
+  body:
+    type: multipart-form
+    data:
+      - name: usemid
+        type: text
+        value: 4ff4db6b-f18f-4ecd-83b3-b997fa77a01e
+      - name: usnombre
+        type: text
+        value: Adrian Caiza
+      - name: usapodo
+        type: text
+        value: adrian adm7
+      - name: uscorreo
+        type: text
+        value: adrian7@gmail.com
+      - name: uspassword
+        type: text
+        value: abc12345678
+      - name: usrol
+        type: text
+        value: empleado
+      - name: imagen
+        type: text
+        value: ""
+        disabled: true
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5NTU3MDQwLCJleHAiOjE3Nzk1NzUwNDB9.WBGkGy8syiHWEib37kxklYmOn_757FfuErO6xVMfRAY
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: "[200] Response"
+    description: Respuesta 200 del servidor cuando enviamos los parametros correctos.
+    request:
+      url: http://localhost:3000/users
+      method: POST
+      body:
+        type: multipart-form
+        data:
+          - name: usemid
+            type: text
+            value: 4ff4db6b-f18f-4ecd-83b3-b997fa77a01e
+          - name: usnombre
+            type: text
+            value: Adrian Caiza
+          - name: usapodo
+            type: text
+            value: adrian adm7
+          - name: uscorreo
+            type: text
+            value: adrian7@gmail.com
+          - name: uspassword
+            type: text
+            value: abc12345678
+          - name: usrol
+            type: text
+            value: empleado
+          - name: imagen
+            type: text
+            value: ""
+            disabled: true
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: content-security-policy
+          value: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: cross-origin-resource-policy
+          value: same-origin
+        - name: origin-agent-cluster
+          value: ?1
+        - name: referrer-policy
+          value: no-referrer
+        - name: strict-transport-security
+          value: max-age=31536000; includeSubDomains
+        - name: x-content-type-options
+          value: nosniff
+        - name: x-dns-prefetch-control
+          value: off
+        - name: x-download-options
+          value: noopen
+        - name: x-frame-options
+          value: SAMEORIGIN
+        - name: x-permitted-cross-domain-policies
+          value: none
+        - name: x-xss-protection
+          value: "0"
+        - name: access-control-allow-origin
+          value: "*"
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "319"
+        - name: etag
+          value: W/"13f-WHUQ6txOpjbMy3DEaeR3haDd1gc"
+        - name: date
+          value: Sat, 23 May 2026 21:11:11 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+            "usid": "27cdce82-ce68-4020-b81a-3619555d6cd5",
+            "usemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+            "usnombre": "Adrian Caiza",
+            "usapodo": "adrian adm7",
+            "uscorreo": "adrian7@gmail.com",
+            "usimagen": "http://localhost:3000/uploads/usuarios/user.png",
+            "usrol": "empleado",
+            "usfchregistro": "2026-05-23T21:11:11.847Z",
+            "usestado": "activo"
+          }
+
+docs: |
+  # POST /users
+
+  ## Descripción
+  Registra un nuevo usuario.
+
+  ## Autenticación
+  Requiere token JWT en el header:
+
+  `Authorization: Bearer <token>`
+
+  ## Content-Type
+  - `application/json` (sin imagen)
+  - `multipart/form-data` (con imagen)
+
+  ## Body
+  - `usemid`: id de la empresa a la que pertenecerá el usuario.
+  - `usnombre`: nombre del usuario.
+  - `usapodo`: apodo (nickname) del usuario.
+  - `uscorreo`: correo del usuario.
+  - `uspassword`: contraseña (mínimo 8 caracteres).
+  - `usrol`: rol del usuario (`administrador`, `jefe`, `empleado`).
+  - `imagen` (opcional, archivo): imagen de perfil.
+
+  ## Reglas de imagen (si se envía)
+  - Campo: `imagen`
+  - Formatos permitidos: `.png`, `.jpg`
+  - Tamaño máximo: `5MB`
+  - Si no se envía, se usa imagen por defecto.
+
+  ## Ejemplo (JSON)
+
+  `POST /users`
+
+  ```json
+  {
+    "usemid": "0f4c5bde-9a11-4c76-9b6a-2e0b58e9bc2a",
+    "usnombre": "Juan Perez",
+    "usapodo": "jperez",
+    "uscorreo": "juan.perez@empresa.com",
+    "uspassword": "secreto123",
+    "usrol": "empleado"
+  }
+  ```
+
+  ## Respuesta Exitosa
+  `201 Created`
+
+  ```json
+  {
+    "usid": "2a6eb0a9-10e1-49fb-a2f3-1e5c580f5a07",
+    "usemid": "0f4c5bde-9a11-4c76-9b6a-2e0b58e9bc2a",
+    "usnombre": "Juan Perez",
+    "usapodo": "jperez",
+    "uscorreo": "juan.perez@empresa.com",
+    "usimagen": "https://api.tudominio.com/uploads/usuarios/user.png",
+    "usrol": "empleado",
+    "usfchregistro": "2026-05-23T17:29:01.621Z",
+    "usestado": "activo"
+  }
+  ```
+
+  ## Errores comunes
+  - Token inválido o ausente: `401 Unauthorized`.
+  - Empresa no existe o no está activa: error de validación/negocio.
+  - Correo ya registrado: `User already exists with that email`.
+  - Apodo ya registrado: `User already exists with that nickname`.
+  - Datos inválidos (nombre, correo, contraseña, rol): error de validación.

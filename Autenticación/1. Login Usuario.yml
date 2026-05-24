@@ -1,0 +1,23 @@
+info:
+  name: 1. Login Usuario
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/auth/login
+  body:
+    type: json
+    data: |-
+      {
+        "emruc": "0000000000000",
+        "usapodo": "esnt2004",
+        "uspassword": "abc12345678"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

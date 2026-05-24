@@ -1,0 +1,151 @@
+info:
+  name: 2. Ver Medidas
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://localhost:3000/medidas?page=1&pageSize=10
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: pageSize
+      value: "10"
+      type: query
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5NTU3MDQwLCJleHAiOjE3Nzk1NzUwNDB9.WBGkGy8syiHWEib37kxklYmOn_757FfuErO6xVMfRAY
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: "[ 200 ] Response"
+    description: Respuesta 200 del servidor cuando enviamos los parametros correctos.
+    request:
+      url: http://localhost:3000/medidas?page=1&pageSize=10
+      method: GET
+      params:
+        - name: page
+          value: "1"
+          type: query
+        - name: pageSize
+          value: "10"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-security-policy
+          value: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: cross-origin-resource-policy
+          value: same-origin
+        - name: origin-agent-cluster
+          value: ?1
+        - name: referrer-policy
+          value: no-referrer
+        - name: strict-transport-security
+          value: max-age=31536000; includeSubDomains
+        - name: x-content-type-options
+          value: nosniff
+        - name: x-dns-prefetch-control
+          value: off
+        - name: x-download-options
+          value: noopen
+        - name: x-frame-options
+          value: SAMEORIGIN
+        - name: x-permitted-cross-domain-policies
+          value: none
+        - name: x-xss-protection
+          value: "0"
+        - name: access-control-allow-origin
+          value: "*"
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "275"
+        - name: etag
+          value: W/"113-lTQ0iY32z+jADbEerDGMiRYcUUs"
+        - name: date
+          value: Sat, 23 May 2026 21:16:00 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+            "items": [
+              {
+                "mdiaid": "51ed3597-837e-42d1-9bf7-79a30e00f51d",
+                "mdiaemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+                "mdianombre": "Libra",
+                "mdiaabreviatura": "lb",
+                "mdiafchregistro": "2026-05-23T21:13:31.096Z",
+                "mdiaestado": "activo"
+              }
+            ],
+            "page": 1,
+            "pageSize": 10,
+            "totalItems": 1,
+            "totalPages": 1
+          }
+
+docs: |
+  # GET /medidas
+
+  ## Descripción
+  Obtiene el listado paginado de medidas de la empresa del usuario autenticado.
+
+  ## Autenticación
+  Requiere token JWT en el header:
+
+  `Authorization: Bearer <token>`
+
+  ## Query Params (obligatorios)
+  - `page`: número de página (entero positivo).
+  - `pageSize`: cantidad de registros por página (entero positivo).
+
+  Ejemplo:
+
+  `GET /medidas?page=1&pageSize=20`
+
+  ## Respuesta Exitosa
+  `200 OK`
+
+  ```json
+  {
+    "items": [
+      {
+        "mdiaid": "7f4f7a99-f7dc-4b10-9326-9e4ec8300e89",
+        "mdiaemid": "e2f7b231-fc3d-4010-9ec0-47ed08a34593",
+        "mdianombre": "Unidad",
+        "mdiaabreviatura": "UND",
+        "mdiafchregistro": "2026-05-23T17:29:01.621Z",
+        "mdiaestado": "activo"
+      }
+    ],
+    "page": 1,
+    "pageSize": 20,
+    "totalItems": 5,
+    "totalPages": 1
+  }
+  ```
+
+  ## Comportamiento relevante
+  - Solo retorna medidas de la misma empresa del usuario autenticado.
+  - La empresa del usuario autenticado debe estar activa.
+  - El usuario autenticado debe estar activo.
+  - Roles permitidos para este endpoint: `jefe` o `empleado`.
+
+  ## Errores comunes
+  - Token inválido o ausente: `401 Unauthorized`.
+  - `page` o `pageSize` inválidos (no entero positivo): error de validación.
+  - Usuario sin permisos para el endpoint: error de autorización.

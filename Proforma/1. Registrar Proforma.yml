@@ -1,0 +1,42 @@
+info:
+  name: 1. Registrar Proforma
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/proformas
+  body:
+    type: json
+    data: |-
+      {
+        "prfmasuid": "2079f9a4-2676-4601-9c87-cfb81edb70e4",
+        "prfmacjid": "2dbe2030-46d6-4960-bd5e-fafb6719540f",
+        "prfmaclnteid": "f969e3c1-cd5f-4286-8b5a-81ae9badfa3e",
+        "prfmampid": "12421636-dde1-44f1-b36c-9bd81bee22af",
+        "prfmadescuento": 3.5,
+        "items": [
+          {
+            "dprfmaesinventariable": true,
+            "prdtoid": "44ec3fea-f028-4631-a51c-124594be850d",
+            "cantidad": 2,
+            "preciounitario": 10.5
+          },
+          {
+            "dprfmaesinventariable": false,
+            "dprfmacodigo": "MAN-001",
+            "dprfmadescripcion": "Servicio de instalación y ajuste",
+            "cantidad": 1,
+            "preciounitario": 25
+          }
+        ]
+      }
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5NTk3MjU4LCJleHAiOjE3Nzk2MTUyNTh9.quqwP_h867d_XqW9cEeXzgxVBDIwcR2aileLvhrVALc
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
