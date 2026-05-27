@@ -1,0 +1,17 @@
+info:
+  name: 5. Cancelar Proforma
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: http://localhost:3000/proformas/ebac8c1c-62f6-4f6c-ba21-30f5250326a3/cancel
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5NjgzNzQwLCJleHAiOjE3Nzk3MDE3NDB9.7BMRZ6hskOXo4BhctK5yQEKCu0Z4o6Gbdh__egxRImg
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

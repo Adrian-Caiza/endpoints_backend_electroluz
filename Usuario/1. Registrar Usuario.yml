@@ -11,29 +11,29 @@ http:
     data:
       - name: usemid
         type: text
-        value: 4ff4db6b-f18f-4ecd-83b3-b997fa77a01e
+        value: a8300817-2a19-455e-9a36-d5b246f6da2d
       - name: usnombre
         type: text
         value: Adrian Caiza
       - name: usapodo
         type: text
-        value: adrian adm7
+        value: amdcaiza
       - name: uscorreo
         type: text
-        value: adrian7@gmail.com
+        value: adrian.caiza@gmail.com
       - name: uspassword
         type: text
         value: abc12345678
       - name: usrol
         type: text
-        value: empleado
+        value: jefe
       - name: imagen
         type: text
         value: ""
         disabled: true
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJqZWZlIiwiaWF0IjoxNzc5NTU3MDQwLCJleHAiOjE3Nzk1NzUwNDB9.WBGkGy8syiHWEib37kxklYmOn_757FfuErO6xVMfRAY
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiMThmYzVmMGEtY2RiZS00NmZlLWE3ZWItYzAxOGMwNGFjYmNhIiwidXNlbWlkIjoiMWY1Zjc3Y2UtNWU2ZS00MjcwLWI2YjktNTRkM2M5NDUyNzQ0IiwidXNyb2wiOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzc5NzIzOTg0LCJleHAiOjE3Nzk3NDE5ODR9.TW7aNMKBiEI7WC2pGL-UpRoXiKYO56QSC6RuqSpcm5s
 
 settings:
   encodeUrl: true

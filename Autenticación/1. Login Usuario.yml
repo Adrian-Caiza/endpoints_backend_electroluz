@@ -21,3 +21,69 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |
+  # POST /auth/login
+
+  ## Descripción
+  Inicia sesión de usuario y retorna un `accessToken` y un `refreshToken`.
+
+  ## Autenticación
+  No requiere token JWT.
+
+  ## Content-Type
+  - `application/json`
+
+  ## Body (obligatorios)
+  - `emruc`: RUC de la empresa.
+  - `usapodo`: apodo del usuario.
+  - `uspassword`: contraseña del usuario.
+
+  ## Ejemplo (JSON)
+
+  ```json
+  {
+    "emruc": "1709639106001",
+    "usapodo": "jperez",
+    "uspassword": "secreto123"
+  }
+  ```
+
+  ## Respuesta Exitosa
+  `200 OK`
+
+  ```json
+  {
+    "accessToken": "<jwt_access_token>",
+    "refreshToken": "<opaque_refresh_token>",
+    "company": {
+      "emid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+      "emruc": "1709639106001",
+      "emrznsocial": "Ferreconst ElectroLuz K y B",
+      "emlogo": "http://localhost:3000/uploads/empresas/company.png",
+      "emestado": "activo",
+      "empadre": false
+    },
+    "user": {
+      "usid": "2a6eb0a9-10e1-49fb-a2f3-1e5c580f5a07",
+      "usemid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
+      "usnombre": "Juan Perez",
+      "usapodo": "jperez",
+      "uscorreo": "juan.perez@empresa.com",
+      "usimagen": "http://localhost:3000/uploads/usuarios/user.png",
+      "usrol": "jefe",
+      "usestado": "activo"
+    }
+  }
+  ```
+
+  ## Comportamiento relevante
+  - `accessToken` se usa para endpoints protegidos (`Authorization: Bearer <token>`).
+  - `refreshToken` se usa para renovar sesión en `POST /auth/refresh`.
+  - El backend valida usuario y empresa en estado `activo`.
+
+  ## Errores comunes
+  - Credenciales inválidas: `500 Internal Server Error` (comportamiento actual del backend).
+  - Usuario inactivo: `500 Internal Server Error` (comportamiento actual del backend).
+  - Empresa inactiva: `500 Internal Server Error` (comportamiento actual del backend).
+  - Error inesperado: `500 Internal Server Error`.

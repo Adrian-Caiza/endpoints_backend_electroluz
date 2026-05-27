@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: http://localhost:3000/companies/e2f7b231-fc3d-4010-9ec0-47ed08a34593
+  url: http://163.245.192.54:3000/companies/a8300817-2a19-455e-9a36-d5b246f6da2d
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJlbXBsZWFkbyIsImlhdCI6MTc3OTIxODYxMywiZXhwIjoxNzc5MjM2NjEzfQ.MR3EdmROV6aF1i7yu2jdW0e9pbCspuRx_O5jqi0vB84
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiMThmYzVmMGEtY2RiZS00NmZlLWE3ZWItYzAxOGMwNGFjYmNhIiwidXNlbWlkIjoiMWY1Zjc3Y2UtNWU2ZS00MjcwLWI2YjktNTRkM2M5NDUyNzQ0IiwidXNyb2wiOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzc5NzIzOTg0LCJleHAiOjE3Nzk3NDE5ODR9.TW7aNMKBiEI7WC2pGL-UpRoXiKYO56QSC6RuqSpcm5s
 
 settings:
   encodeUrl: true

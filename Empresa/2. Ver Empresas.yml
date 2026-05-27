@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: http://localhost:3000/companies?page=1&pageSize=5
+  url: http://163.245.192.54:3000/companies?page=1&pageSize=5
   params:
     - name: page
       value: "1"
@@ -15,7 +15,7 @@ http:
       type: query
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiNDI4MzMxYmItYjg5Mi00YmZmLWI5ZGMtMjYyNjBjNjhlN2Y0IiwidXNlbWlkIjoiNGZmNGRiNmItZjE4Zi00ZWNkLTgzYjMtYjk5N2ZhNzdhMDFlIiwidXNyb2wiOiJlbXBsZWFkbyIsImlhdCI6MTc3OTE2MDM0OSwiZXhwIjoxNzc5MTc4MzQ5fQ.BU7vgUIKXMNISUd8INzu0KH611QHQu-vBUbqS1T2QFg
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2lkIjoiMThmYzVmMGEtY2RiZS00NmZlLWE3ZWItYzAxOGMwNGFjYmNhIiwidXNlbWlkIjoiMWY1Zjc3Y2UtNWU2ZS00MjcwLWI2YjktNTRkM2M5NDUyNzQ0IiwidXNyb2wiOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNzc5NzIzOTg0LCJleHAiOjE3Nzk3NDE5ODR9.TW7aNMKBiEI7WC2pGL-UpRoXiKYO56QSC6RuqSpcm5s
 
 settings:
   encodeUrl: true
@@ -117,6 +117,81 @@ examples:
             "page": 1,
             "pageSize": 5,
             "totalItems": 3,
+            "totalPages": 1
+          }
+  - name: "[ 200 ] Response Production"
+    description: Respuesta 200 del servidor en producción cuando enviamos los parametros correctos.
+    request:
+      url: http://163.245.192.54:3000/companies?page=1&pageSize=5
+      method: GET
+      params:
+        - name: page
+          value: "1"
+          type: query
+        - name: pageSize
+          value: "5"
+          type: query
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-security-policy
+          value: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+        - name: cross-origin-opener-policy
+          value: same-origin
+        - name: cross-origin-resource-policy
+          value: same-origin
+        - name: origin-agent-cluster
+          value: ?1
+        - name: referrer-policy
+          value: no-referrer
+        - name: strict-transport-security
+          value: max-age=31536000; includeSubDomains
+        - name: x-content-type-options
+          value: nosniff
+        - name: x-dns-prefetch-control
+          value: off
+        - name: x-download-options
+          value: noopen
+        - name: x-frame-options
+          value: SAMEORIGIN
+        - name: x-permitted-cross-domain-policies
+          value: none
+        - name: x-xss-protection
+          value: "0"
+        - name: access-control-allow-origin
+          value: "*"
+        - name: content-type
+          value: application/json; charset=utf-8
+        - name: content-length
+          value: "372"
+        - name: etag
+          value: W/"174-43TQRW60b3cYK+2c+gO4uay0pjs"
+        - name: date
+          value: Mon, 25 May 2026 16:35:02 GMT
+        - name: connection
+          value: keep-alive
+        - name: keep-alive
+          value: timeout=5
+      body:
+        type: json
+        data: |-
+          {
+            "items": [
+              {
+                "emid": "a8300817-2a19-455e-9a36-d5b246f6da2d",
+                "emruc": "1709639106001",
+                "emrznsocial": "Ferreconst Electro K & B",
+                "emcorreo": "electroK&B@gmail.com",
+                "emlogo": "http://163.245.192.54:3000/uploads/empresas/Logo_Electro_K_y_B_BN.png",
+                "emcodigo": "FE00",
+                "emfchregistro": "2026-05-25T16:07:14.483Z",
+                "emestado": "activo"
+              }
+            ],
+            "page": 1,
+            "pageSize": 5,
+            "totalItems": 1,
             "totalPages": 1
           }
 

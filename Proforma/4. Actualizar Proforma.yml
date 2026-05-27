@@ -1,18 +1,16 @@
 info:
-  name: 1. Registrar Proforma
+  name: 4. Actualizar Proforma
   type: http
-  seq: 1
+  seq: 4
 
 http:
-  method: POST
-  url: http://localhost:3000/proformas
+  method: PUT
+  url: http://localhost:3000/proformas/ebac8c1c-62f6-4f6c-ba21-30f5250326a3
   body:
     type: json
     data: |-
       {
-        "prfmasuid": "2079f9a4-2676-4601-9c87-cfb81edb70e4",
-        "prfmacjid": "2dbe2030-46d6-4960-bd5e-fafb6719540f",
-        "prfmaclnteid": "f969e3c1-cd5f-4286-8b5a-81ae9badfa3e",
+        "prfmaclnteid": "349283b8-4ab0-4804-af7b-df4642931efb",
         "prfmampid": "12421636-dde1-44f1-b36c-9bd81bee22af",
         "dprfmaproductos": [
           {
@@ -25,15 +23,15 @@ http:
           },
           {
             "dprfmaesinventariable": false,
-            "dprfmadescripcion": "Servicio de instalación y ajuste",
-            "dprfmacantidad": 1,
-            "dprfmapreciounitario": 10,
-            "dprfmapreciototal": 10
+            "dprfmadescripcion": "Servicio de Pintura",
+            "dprfmacantidad": 2,
+            "dprfmapreciounitario": 40,
+            "dprfmapreciototal": 80
           }
         ],
-        "prfmasubtotal": 35,
+        "prfmasubtotal": 105,
         "prfmadescuento": 3,
-        "prfmatotal": 32
+        "prfmatotal": 102
       }
   auth:
     type: bearer
@@ -47,17 +45,15 @@ settings:
 
 examples:
   - name: "[ 200 ] Response"
-    description: Respuesta 200 del servidor cuando enviamos los prametros correctos.
+    description: Respuesta 200 del servidor cuando enviamos los parametros correctos.
     request:
-      url: http://localhost:3000/proformas
-      method: POST
+      url: http://localhost:3000/proformas/ebac8c1c-62f6-4f6c-ba21-30f5250326a3
+      method: PUT
       body:
         type: json
         data: |-
           {
-            "prfmasuid": "2079f9a4-2676-4601-9c87-cfb81edb70e4",
-            "prfmacjid": "2dbe2030-46d6-4960-bd5e-fafb6719540f",
-            "prfmaclnteid": "f969e3c1-cd5f-4286-8b5a-81ae9badfa3e",
+            "prfmaclnteid": "349283b8-4ab0-4804-af7b-df4642931efb",
             "prfmampid": "12421636-dde1-44f1-b36c-9bd81bee22af",
             "dprfmaproductos": [
               {
@@ -70,19 +66,19 @@ examples:
               },
               {
                 "dprfmaesinventariable": false,
-                "dprfmadescripcion": "Servicio de instalación y ajuste",
-                "dprfmacantidad": 1,
-                "dprfmapreciounitario": 10,
-                "dprfmapreciototal": 10
+                "dprfmadescripcion": "Servicio de Pintura",
+                "dprfmacantidad": 2,
+                "dprfmapreciounitario": 40,
+                "dprfmapreciototal": 80
               }
             ],
-            "prfmasubtotal": 35,
+            "prfmasubtotal": 105,
             "prfmadescuento": 3,
-            "prfmatotal": 32
+            "prfmatotal": 102
           }
     response:
-      status: 201
-      statusText: Created
+      status: 200
+      statusText: OK
       headers:
         - name: content-security-policy
           value: "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
@@ -113,11 +109,11 @@ examples:
         - name: content-type
           value: application/json; charset=utf-8
         - name: content-length
-          value: "1646"
+          value: "1676"
         - name: etag
-          value: W/"66e-84MFnyAc0AoZ9mina4RKd00IlDs"
+          value: W/"68c-n3sGOntmpU9k6uwL5s05h4VcYPM"
         - name: date
-          value: Mon, 25 May 2026 04:25:33 GMT
+          value: Mon, 25 May 2026 05:53:22 GMT
         - name: connection
           value: keep-alive
         - name: keep-alive
@@ -127,11 +123,11 @@ examples:
         data: |-
           {
             "proforma": {
-              "prfmaid": "a2712e44-75d8-40d9-95ea-e6e6f39cf48d",
-              "prfmaidentificador": "FE01-002-001-32",
+              "prfmaid": "ebac8c1c-62f6-4f6c-ba21-30f5250326a3",
+              "prfmaidentificador": "FE01-002-001-29",
               "prfmaestado": "emitida",
-              "prfmafchregistro": "2026-05-25T04:25:33.081Z",
-              "prfmafchactualizacion": "2026-05-25T04:25:33.081Z",
+              "prfmafchregistro": "2026-05-25T04:01:43.781Z",
+              "prfmafchactualizacion": "2026-05-25T05:53:22.388Z",
               "emisor": {
                 "empresa": {
                   "emid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
@@ -157,12 +153,14 @@ examples:
                 }
               },
               "receptor": {
-                "clnteid": "f969e3c1-cd5f-4286-8b5a-81ae9badfa3e",
-                "clntenombre": "Juan Perez",
-                "clnteidentificacion": "1712345678",
-                "clntecorreo": "juan.perez@email.com",
-                "clntetelefono": "0987654321",
-                "clntedireccion": "Av. Principal y Calle 10"
+                "cliente": {
+                  "clnteid": "349283b8-4ab0-4804-af7b-df4642931efb",
+                  "clntenombre": "Juan Perez Actualizado",
+                  "clnteidentificacion": "1412345678",
+                  "clntecorreo": "juan.perez.actualizado@email.com",
+                  "clntetelefono": "0991234567",
+                  "clntedireccion": "Av. Amazonas y Naciones Unidas"
+                }
               },
               "metodoPago": {
                 "mpid": "12421636-dde1-44f1-b36c-9bd81bee22af",
@@ -170,18 +168,18 @@ examples:
               },
               "detalle": [
                 {
-                  "dprfmaid": "1fa6857e-9b94-4fe9-a6b7-b7de03eda687",
+                  "dprfmaid": "3f995782-3210-4520-b0f1-0f9f60ad613c",
                   "dprfmatipoitem": "manual",
                   "producto": {
                     "dprfmacodigo": null,
-                    "dprfmadescripcion": "Servicio de instalación y ajuste",
-                    "dprfmacantidad": 1,
-                    "dprfmapreciounitario": 10,
-                    "dprfmapreciototal": 10
+                    "dprfmadescripcion": "Servicio de Pintura",
+                    "dprfmacantidad": 2,
+                    "dprfmapreciounitario": 40,
+                    "dprfmapreciototal": 80
                   }
                 },
                 {
-                  "dprfmaid": "5c474b73-3909-4b7d-915f-b57d1c80ffd9",
+                  "dprfmaid": "6f5f3909-14f9-4afd-b6a5-4b8e5f542377",
                   "dprfmatipoitem": "inventariable",
                   "producto": {
                     "dprfmacodigo": "012344678901",
@@ -193,30 +191,28 @@ examples:
                 }
               ],
               "total": {
-                "prfmasubtotal": 35,
+                "prfmasubtotal": 105,
                 "prfmadescuento": 3,
-                "prfmatotal": 32
+                "prfmatotal": 102
               }
             }
           }
 
 docs: |
-  # POST /proformas
+  # PUT /proformas/:id
 
-  ## Descripción
-  Registra una nueva proforma en estado `emitida` para la empresa del usuario autenticado.
+  ## Descripcion
+  Actualiza una proforma completa en una sola operacion: receptor, metodo de
+  pago, importes y lineas del detalle.
 
-  Responsabilidades del endpoint:
-  - Validar permisos de empresa y usuario.
-  - Validar consistencia de subtotales/totales enviados por frontend.
-  - Generar identificador secuencial (`prfmaidentificador`).
-  - Guardar cabecera y detalle de la proforma.
-  - Devolver el documento completo para consumo de frontend.
+  Este endpoint es la ruta principal para guardar el formulario de edicion de
+  una proforma. La cabecera y el detalle se persisten atomicamente: si alguna
+  escritura falla, no se conserva una actualizacion parcial.
 
   ## Ruta
-  `POST /proformas`
+  `PUT /proformas/:id`
 
-  ## Autenticación
+  ## Autenticacion
   Requiere JWT:
 
   `Authorization: Bearer <token>`
@@ -224,57 +220,75 @@ docs: |
   ## Content-Type
   `application/json`
 
+  ## Path Params
+  - `id` (string, requerido): identificador de la proforma (`prfmaid`).
+
   ## Body
 
-  ### Cabecera
-  - `prfmasuid` (string, requerido): id de sucursal.
-  - `prfmacjid` (string, requerido): id de caja.
-  - `prfmaclnteid` (string, requerido): id de cliente.
-  - `prfmampid` (string, requerido): id de método de pago.
-  - `prfmasubtotal` (number, requerido): subtotal calculado por frontend.
-  - `prfmadescuento` (number, opcional, default `0`): descuento total.
-  - `prfmatotal` (number, requerido): total final calculado por frontend.
-  - `dprfmaproductos` (array, requerido): detalle de productos/servicios.
+  ### Cabecera editable
+  - `prfmaclnteid` (string, requerido): id del cliente receptor.
+  - `prfmampid` (string, requerido): id del metodo de pago.
+  - `prfmasubtotal` (number, requerido, >= 0): subtotal calculado por frontend.
+  - `prfmadescuento` (number, requerido, >= 0): descuento calculado por frontend.
+  - `prfmatotal` (number, requerido, >= 0): total calculado por frontend.
+  - `dprfmaproductos` (array, requerido, no vacio): representacion completa del detalle final.
+
+  No se actualizan por esta ruta: empresa, sucursal, caja, usuario emisor,
+  identificador secuencial, estado ni fechas enviadas por el cliente.
 
   ### Item (`dprfmaproductos[]`)
-  - `dprfmaesinventariable` (boolean, requerido).
-  - `dprfmacodigo` (string, condicional):
-  `requerido` cuando `dprfmaesinventariable = true`; `opcional` cuando `false`.
+  - `dprfmaid` (string, opcional): id de una linea existente que se desea conservar y actualizar.
+  - `dprfmaesinventariable` (boolean, requerido): indica si la linea corresponde a inventario.
+  - `dprfmacodigo` (string, condicional): requerido cuando `dprfmaesinventariable` es `true`.
   - `dprfmadescripcion` (string, requerido).
   - `dprfmacantidad` (number, requerido, > 0).
   - `dprfmapreciounitario` (number, requerido, > 0).
   - `dprfmapreciototal` (number, requerido, > 0).
 
-  ## Reglas de consistencia
-  Se validan antes de guardar:
-  - `sum(dprfmaproductos[].dprfmapreciototal) == prfmasubtotal`
-  - `prfmasubtotal - prfmadescuento == prfmatotal`
+  ## Conciliacion Del Detalle
+  - Una linea con `dprfmaid` se actualiza conservando su id.
+  - Una linea sin `dprfmaid` se inserta y recibe un nuevo id.
+  - Una linea guardada que no aparece en `dprfmaproductos` se elimina.
+  - Un `dprfmaid` repetido, inexistente o perteneciente a otra proforma produce `409 Conflict`.
 
-  Se usa tolerancia numérica de `0.0001` para evitar falsos negativos por coma flotante.
+  El arreglo representa el detalle completo que debe quedar guardado; no es una
+  lista parcial de cambios.
 
-  ## Reglas de negocio
-  - Empresa del usuario autenticado: debe existir y estar `activa`.
-  - Usuario autenticado: debe existir, pertenecer a la empresa, estar `activo` y tener rol `jefe` o `empleado`.
-  - Sucursal: debe existir y estar `activa`.
-  - Caja: debe existir, estar `activa` y pertenecer a la sucursal enviada.
-  - Cliente: debe existir y estar `activo`.
-  - Método de pago: debe existir y estar `activo`.
-  - Secuencia: debe existir para combinación empresa+sucursal.
-  - No se permiten códigos duplicados entre items inventariables.
-  - Todo item con `dprfmaesinventariable = true` debe usar el código de un producto existente y `activo` de la empresa autenticada.
+  ## Reglas De Negocio
+  - Solo una proforma en estado `emitida` puede editarse.
+  - El cliente y el metodo de pago enviados deben existir y estar activos para la empresa autenticada.
+  - No se permiten codigos duplicados entre items inventariables.
+  - Un item inventariable requiere `dprfmacodigo`.
+  - El codigo de cada item inventariable debe identificar un producto existente y activo de la empresa autenticada.
+  - `sum(dprfmaproductos[].dprfmapreciototal) == prfmasubtotal`.
+  - `prfmasubtotal - prfmadescuento == prfmatotal`.
+  - Se usa tolerancia numerica de `0.0001` al validar importes.
+  - Esta operacion no modifica stock; el stock se descuenta al pagar la proforma.
 
   ## Ejemplo Request
 
+  ```http
+  PUT /proformas/66ff3afe-65bb-49f2-80cf-ae279b7fcf5b
+  Authorization: Bearer <token>
+  Content-Type: application/json
+  ```
+
   ```json
   {
-    "prfmasuid": "2079f9a4-2676-4601-9c87-cfb81edb70e4",
-    "prfmacjid": "2dbe2030-46d6-4960-bd5e-fafb6719540f",
     "prfmaclnteid": "f969e3c1-cd5f-4286-8b5a-81ae9badfa3e",
     "prfmampid": "12421636-dde1-44f1-b36c-9bd81bee22af",
     "prfmasubtotal": 35,
-    "prfmadescuento": 0,
-    "prfmatotal": 35,
+    "prfmadescuento": 3,
+    "prfmatotal": 32,
     "dprfmaproductos": [
+      {
+        "dprfmaid": "560214e7-69d2-487d-b959-aecc358582a9",
+        "dprfmaesinventariable": false,
+        "dprfmadescripcion": "Servicio de instalacion y ajuste",
+        "dprfmacantidad": 1,
+        "dprfmapreciounitario": 10,
+        "dprfmapreciototal": 10
+      },
       {
         "dprfmaesinventariable": true,
         "dprfmacodigo": "012344678901",
@@ -282,33 +296,32 @@ docs: |
         "dprfmacantidad": 1,
         "dprfmapreciounitario": 25,
         "dprfmapreciototal": 25
-      },
-      {
-        "dprfmaesinventariable": false,
-        "dprfmadescripcion": "Servicio de instalación y ajuste",
-        "dprfmacantidad": 1,
-        "dprfmapreciounitario": 10,
-        "dprfmapreciototal": 10
       }
     ]
   }
   ```
 
+  En este ejemplo se actualiza la linea manual existente, se agrega la brocha y
+  se eliminan las lineas anteriores que no fueron enviadas.
+
   ## Respuesta Exitosa
-  `201 Created`
+  `200 OK`
+
+  La respuesta utiliza la misma estructura completa de `POST /proformas` y
+  `GET /proformas/:id`:
 
   ```json
   {
     "proforma": {
-      "prfmaid": "ce3bb915-e4e2-4649-8e82-9dff0e5e7946",
-      "prfmaidentificador": "FE01-002-001-23",
+      "prfmaid": "66ff3afe-65bb-49f2-80cf-ae279b7fcf5b",
+      "prfmaidentificador": "FE01-002-001-34",
       "prfmaestado": "emitida",
-      "prfmafchregistro": "2026-05-25T02:18:46.630Z",
-      "prfmafchactualizacion": "2026-05-25T02:18:46.630Z",
+      "prfmafchregistro": "2026-05-25T04:35:56.719Z",
+      "prfmafchactualizacion": "2026-05-25T14:40:00.000Z",
       "emisor": {
         "empresa": {
           "emid": "4ff4db6b-f18f-4ecd-83b3-b997fa77a01e",
-          "emlogo": "http://localhost:3000/uploads/empresas/logo.png",
+          "emlogo": "http://localhost:3000/uploads/empresas/Mujer_portada.png",
           "emrznsocial": "Ferreconst ElectroLuz K y B",
           "emruc": "1709639106001",
           "emcorreo": "electrokyb@gmail.com",
@@ -316,7 +329,7 @@ docs: |
         },
         "sucursal": {
           "suid": "2079f9a4-2676-4601-9c87-cfb81edb70e4",
-          "sunombre": "Sucursal Centro",
+          "sunombre": "Sucursal Centro Historico Basilica",
           "suidentificador": "002"
         },
         "caja": {
@@ -325,7 +338,7 @@ docs: |
         },
         "usuario": {
           "usid": "428331bb-b892-4bff-b9dc-26260c68e7f4",
-          "usnombre": "Erick Nuñez",
+          "usnombre": "Erick Nunez",
           "usrol": "jefe"
         }
       },
@@ -345,7 +358,18 @@ docs: |
       },
       "detalle": [
         {
-          "dprfmaid": "1c2d17f2-7637-4777-a6c3-118b788fe6b3",
+          "dprfmaid": "560214e7-69d2-487d-b959-aecc358582a9",
+          "dprfmatipoitem": "manual",
+          "producto": {
+            "dprfmacodigo": null,
+            "dprfmadescripcion": "Servicio de instalacion y ajuste",
+            "dprfmacantidad": 1,
+            "dprfmapreciounitario": 10,
+            "dprfmapreciototal": 10
+          }
+        },
+        {
+          "dprfmaid": "a0aee57a-277e-41d9-987d-4da410746a3b",
           "dprfmatipoitem": "inventariable",
           "producto": {
             "dprfmacodigo": "012344678901",
@@ -358,23 +382,30 @@ docs: |
       ],
       "total": {
         "prfmasubtotal": 35,
-        "prfmadescuento": 0,
-        "prfmatotal": 35
+        "prfmadescuento": 3,
+        "prfmatotal": 32
       }
     }
   }
   ```
 
-  ## Errores comunes
-  - `401 Unauthorized`: token inválido o ausente.
-  - `409 Conflict`:
-  `Proforma has duplicated products in items`, `Inventariable product code does not exist`, `Inventariable product is not active`, `Subtotal does not match item totals`, `Total does not match subtotal minus discount`, `Sequence does not exist for this company and branch`, `Proforma total cannot be negative`.
-  - `500 Internal Server Error` con mensajes de validación/negocio (comportamiento actual del middleware para errores sin `statusCode`):
-  `Branch id is required`, `Checkout id is required`, `Client id is required`, `Playment method id is required`, `Product code is required for inventariable items`, `dprfmaesinventariable must be a boolean`, `Quantity must be greater than zero`, `Unit price must be greater than zero`, `Item total must be greater than zero`, `Company does not exist`, etc.
+  ## Errores
+  - `400 Bad Request`: payload incompleto, detalle vacio, bandera/tipos invalidos, valor no positivo o codigo faltante en item inventariable.
+  - `401 Unauthorized`: token ausente o invalido.
+  - `404 Not Found`: la proforma no existe para la empresa autenticada.
+  - `409 Conflict`: la proforma no esta `emitida`, montos inconsistentes, total negativo, producto inventariable duplicado, codigo inventariable inexistente/inactivo o referencia de detalle invalida.
+  - `500 Internal Server Error`: error inesperado al persistir o consultar datos.
 
-  ## Notas técnicas
-  - La proforma siempre se crea en estado `emitida`.
-  - El backend no recalcula `dprfmapreciototal`; valida lo enviado por frontend.
-  - `prfmasubtotal` se persiste en cabecera (`proforma`).
-  - `prfmaidentificador` se arma así:
-  `{emcodigo}-{suidentificador}-{cjidentificador}-{secuencia}`.
+  Ejemplo de conflicto de detalle:
+
+  ```json
+  {
+    "message": "Proforma detail does not belong to proforma"
+  }
+  ```
+
+  ## Ruta Unica De Edicion
+  `PUT /proformas/:id` es la unica ruta para modificar datos o detalle de una
+  proforma. Las operaciones `PATCH /proformas/:id/pay` y
+  `PATCH /proformas/:id/cancel` permanecen porque cambian el estado del
+  documento, no editan su contenido.
